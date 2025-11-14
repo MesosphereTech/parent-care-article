@@ -1,351 +1,396 @@
 <!DOCTYPE html>
-
-
-
 <html lang="zh-CN">
-
 <head>
-
   <meta charset="UTF-8" />
-
   <title>真正的关心，是不过界的关心｜林沂川</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <meta name="description" content="写给成年子女与父母的一篇文章：真正的关心，是不过界的关心；真正的尊重，是让对方做自己。" />
-
   <style>
-
     :root {
-
       --bg: #f5f5f7;
-
       --card-bg: #ffffff;
-
       --text-main: #222222;
-
       --text-sub: #555555;
-
       --accent: #3f6df6;
-
+      --accent-light: #6b8eff;
+      --accent-soft: rgba(63, 109, 246, 0.1);
       --border-soft: #e4e4ea;
-
       --max-width: 760px;
-
+      --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     }
 
     * {
-
       box-sizing: border-box;
+    }
 
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
     }
 
     body {
-
       margin: 0;
-
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-
         system-ui, -apple-system, "PingFang SC", "Hiragino Sans GB",
-
         "Microsoft Yahei", sans-serif;
-
-      background: radial-gradient(circle at top, #eef1ff 0, #f5f5f7 40%, #f5f5f7 100%);
-
+      background: radial-gradient(ellipse at top, #eef1ff 0%, #f5f5f7 50%, #f5f5f7 100%);
       color: var(--text-main);
-
       line-height: 1.8;
-
+      animation: fadeInUp 0.6s ease-out;
     }
 
     .page {
-
       min-height: 100vh;
-
       display: flex;
-
       justify-content: center;
-
       padding: 32px 16px 40px;
+      position: relative;
+    }
 
+    .decoration {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .decoration-1 {
+      top: 10%;
+      left: 5%;
+      width: 200px;
+      height: 200px;
+      background: var(--gradient-1);
+      border-radius: 50%;
+      filter: blur(60px);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .decoration-2 {
+      top: 60%;
+      right: 5%;
+      width: 150px;
+      height: 150px;
+      background: var(--gradient-2);
+      border-radius: 50%;
+      filter: blur(50px);
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    .decoration-3 {
+      bottom: 10%;
+      left: 10%;
+      width: 120px;
+      height: 120px;
+      background: var(--gradient-3);
+      border-radius: 50%;
+      filter: blur(40px);
+      animation: pulse 4s ease-in-out infinite;
     }
 
     .article {
-
       max-width: var(--max-width);
-
       width: 100%;
-
       background: var(--card-bg);
-
-      border-radius: 20px;
-
-      padding: 32px 22px 28px;
-
+      border-radius: 24px;
+      padding: 40px 28px 36px;
       box-shadow:
-
-        0 18px 45px rgba(15, 23, 42, 0.08),
-
-        0 0 0 1px rgba(148, 163, 184, 0.12);
-
+        0 20px 60px rgba(15, 23, 42, 0.12),
+        0 0 0 1px rgba(148, 163, 184, 0.08);
       position: relative;
-
       overflow: hidden;
-
+      z-index: 1;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
     }
 
     .article::before {
-
       content: "";
-
       position: absolute;
-
       inset: 0;
-
       pointer-events: none;
-
-      background: radial-gradient(circle at top right,
-
-              rgba(129, 140, 248, 0.12) 0,
-
-              transparent 55%);
-
+      background: 
+        radial-gradient(circle at top right, rgba(129, 140, 248, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
       mix-blend-mode: normal;
-
     }
 
     .article-inner {
-
       position: relative;
-
       z-index: 1;
+    }
 
+    .header-illustration {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 24px;
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    }
+
+    .illustration-svg {
+      width: 100%;
+      height: 100%;
     }
 
     .badge {
-
       display: inline-flex;
-
       align-items: center;
-
       gap: 6px;
-
-      padding: 4px 10px;
-
+      padding: 6px 12px;
       border-radius: 999px;
-
-      background: rgba(63, 109, 246, 0.07);
-
+      background: var(--accent-soft);
       color: var(--accent);
-
       font-size: 12px;
-
-      margin-bottom: 10px;
-
+      margin-bottom: 12px;
+      font-weight: 500;
+      animation: fadeInUp 0.6s ease-out 0.4s both;
     }
 
     .badge-dot {
-
       width: 6px;
-
       height: 6px;
-
       border-radius: 50%;
-
       background: var(--accent);
-
+      animation: pulse 2s ease-in-out infinite;
     }
 
     h1 {
-
-      font-size: 26px;
-
-      margin: 8px 0 12px;
-
-      letter-spacing: 0.04em;
-
+      font-size: 28px;
+      margin: 12px 0 16px;
+      letter-spacing: 0.02em;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 0.6s ease-out 0.5s both;
     }
 
     .subtitle {
-
       color: var(--text-sub);
-
-      font-size: 14px;
-
-      margin-bottom: 20px;
-
+      font-size: 15px;
+      margin-bottom: 24px;
+      font-style: italic;
+      animation: fadeInUp 0.6s ease-out 0.6s both;
     }
 
     .meta {
-
       display: flex;
-
       flex-wrap: wrap;
-
       align-items: baseline;
-
-      gap: 10px;
-
+      gap: 12px;
       font-size: 13px;
-
       color: var(--text-sub);
-
-      padding-bottom: 16px;
-
-      border-bottom: 1px solid var(--border-soft);
-
-      margin-bottom: 16px;
-
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--border-soft);
+      margin-bottom: 24px;
+      animation: fadeInUp 0.6s ease-out 0.7s both;
     }
 
     .meta-author {
-
       font-weight: 600;
-
       color: #111827;
-
     }
 
     .meta-sep {
-
       color: #d4d4d8;
-
     }
 
     .section-title {
-
       font-weight: 600;
-
-      font-size: 16px;
-
-      margin-top: 20px;
-
-      margin-bottom: 6px;
-
+      font-size: 17px;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      padding-left: 8px;
+      border-left: 3px solid var(--accent);
+      animation: fadeInUp 0.5s ease-out;
     }
 
     .section-title span {
-
       color: var(--accent);
+      margin-right: 6px;
+      font-size: 18px;
+    }
 
-      margin-right: 4px;
-
+    .section-illustration {
+      width: 100%;
+      max-width: 400px;
+      margin: 16px auto;
+      height: 120px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
     p {
-
-      margin: 4px 0 8px;
-
-      font-size: 15px;
-
+      margin: 8px 0 12px;
+      font-size: 15.5px;
+      line-height: 1.85;
+      animation: fadeInUp 0.5s ease-out;
     }
 
     strong {
-
       font-weight: 600;
-
+      color: #1e293b;
     }
 
     blockquote {
-
-      margin: 10px 0 12px;
-
-      padding: 10px 14px;
-
-      border-left: 3px solid var(--accent);
-
-      background: #f9fafb;
-
-      border-radius: 0 10px 10px 0;
-
+      margin: 16px 0 20px;
+      padding: 16px 20px;
+      border-left: 4px solid var(--accent);
+      background: linear-gradient(to right, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0.02) 100%);
+      border-radius: 0 12px 12px 0;
       color: #374151;
+      font-size: 15px;
+      position: relative;
+      animation: fadeInUp 0.5s ease-out;
+    }
 
-      font-size: 14px;
-
+    blockquote::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      font-size: 48px;
+      color: var(--accent);
+      opacity: 0.2;
+      font-family: Georgia, serif;
     }
 
     hr {
-
       border: none;
+      border-top: 2px dashed var(--border-soft);
+      margin: 28px 0 20px;
+      position: relative;
+    }
 
-      border-top: 1px dashed var(--border-soft);
-
-      margin: 18px 0 14px;
-
+    hr::before {
+      content: "◆";
+      position: absolute;
+      left: 50%;
+      top: -8px;
+      transform: translateX(-50%);
+      background: var(--card-bg);
+      padding: 0 8px;
+      color: var(--accent);
+      font-size: 12px;
     }
 
     .footer-note {
-
-      margin-top: 20px;
-
-      padding-top: 12px;
-
-      border-top: 1px solid var(--border-soft);
-
-      font-size: 12px;
-
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 2px solid var(--border-soft);
+      font-size: 13px;
       color: #9ca3af;
-
       display: flex;
-
       justify-content: space-between;
-
       flex-wrap: wrap;
-
-      gap: 8px;
-
+      gap: 12px;
+      animation: fadeInUp 0.6s ease-out;
     }
 
     .author-bio {
-
-      font-size: 12px;
-
+      font-size: 13px;
       color: #6b7280;
-
-      margin-top: 4px;
-
+      margin-top: 8px;
+      padding: 16px;
+      background: rgba(99, 102, 241, 0.03);
+      border-radius: 12px;
+      border-left: 3px solid var(--accent);
+      animation: fadeInUp 0.6s ease-out;
     }
 
     @media (min-width: 820px) {
-
       .article {
-
-        padding: 36px 40px 32px;
-
+        padding: 48px 50px 40px;
       }
 
       h1 {
-
-        font-size: 30px;
-
+        font-size: 32px;
       }
 
       p {
-
-        font-size: 15px;
-
+        font-size: 16px;
       }
 
+      .header-illustration {
+        height: 220px;
+      }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+      }
+    }
   </style>
-
 </head>
-
 <body>
+  <div class="decoration decoration-1"></div>
+  <div class="decoration decoration-2"></div>
+  <div class="decoration decoration-3"></div>
 
   <main class="page">
-
     <article class="article">
-
       <div class="article-inner">
+        <div class="header-illustration">
+          <svg class="illustration-svg" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.3" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.2" />
+              </linearGradient>
+            </defs>
+            <!-- 两个人物轮廓，代表父母与子女 -->
+            <circle cx="120" cy="90" r="35" fill="url(#grad1)" opacity="0.6" />
+            <circle cx="280" cy="90" r="35" fill="url(#grad1)" opacity="0.6" />
+            <!-- 连接线，表示关系 -->
+            <path d="M 155 90 Q 200 60 245 90" stroke="#667eea" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5" />
+            <path d="M 155 90 Q 200 120 245 90" stroke="#764ba2" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5" />
+            <!-- 边界线 -->
+            <line x1="200" y1="30" x2="200" y2="150" stroke="#e4e4ea" stroke-width="1" stroke-dasharray="3,3" opacity="0.5" />
+            <!-- 装饰性元素 -->
+            <circle cx="80" cy="50" r="3" fill="#667eea" opacity="0.4" />
+            <circle cx="320" cy="50" r="3" fill="#764ba2" opacity="0.4" />
+            <circle cx="80" cy="130" r="3" fill="#667eea" opacity="0.4" />
+            <circle cx="320" cy="130" r="3" fill="#764ba2" opacity="0.4" />
+          </svg>
+        </div>
 
         <div class="badge">
-
           <span class="badge-dot"></span>
-
           <span>亲子关系 · 边界感</span>
-
         </div>
 
         <h1>真正的关心，是不过界的关心</h1>
@@ -353,17 +398,9 @@
         <div class="subtitle">——写给成年子女与父母的一篇文章</div>
 
         <div class="meta">
-
           <span class="meta-author">文 / 林沂川</span>
-
           <span class="meta-sep">·</span>
-
-          <span>虚构作者，任何巧合纯属雷同</span>
-
-          <span class="meta-sep">·</span>
-
           <span>首发：心流边上 · 专栏</span>
-
         </div>
 
         <p>人到中年以后，父母与子女之间最大的误会，往往不是"不爱"，而是<strong>爱得方式不一样了</strong>。</p>
@@ -375,17 +412,32 @@
         <hr />
 
         <div class="section-title">
-
           <span>一、</span>叔本华说："世界上最常见的不尊重，是无意识的干涉。"
+        </div>
 
+        <div class="section-illustration">
+          <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.2" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.1" />
+              </linearGradient>
+            </defs>
+            <!-- 两个独立的个体 -->
+            <rect x="50" y="40" width="60" height="60" rx="8" fill="url(#grad2)" />
+            <rect x="290" y="40" width="60" height="60" rx="8" fill="url(#grad2)" />
+            <!-- 中间的边界 -->
+            <line x1="200" y1="20" x2="200" y2="100" stroke="#e4e4ea" stroke-width="2" stroke-dasharray="4,4" />
+            <!-- 尊重的手势 -->
+            <path d="M 120 70 L 140 50 L 140 70 L 120 70" fill="#667eea" opacity="0.3" />
+            <path d="M 280 70 L 260 50 L 260 70 L 280 70" fill="#764ba2" opacity="0.3" />
+          </svg>
         </div>
 
         <p>叔本华在《论噪音》中写过一句非常重要的话：</p>
 
         <blockquote>
-
           <strong>"许多人不是恶意，而是迟钝——他们不知道自己的行为正在干扰别人。"</strong>
-
         </blockquote>
 
         <p>父母替成年子女做很多事情，其实不一定是错的，但子女常常会感到——<strong>被否定、被替代、被当作小孩。</strong></p>
@@ -399,17 +451,31 @@
         <hr />
 
         <div class="section-title">
-
           <span>二、</span>钱钟书说："亲子之间最怕的是：爱成了束缚。"
+        </div>
 
+        <div class="section-illustration">
+          <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.2" />
+                <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.15" />
+              </linearGradient>
+            </defs>
+            <!-- 成长的小树 -->
+            <path d="M 200 100 L 200 60 L 190 70 L 200 60 L 210 70 Z" fill="#f093fb" opacity="0.4" />
+            <circle cx="200" cy="60" r="15" fill="url(#grad3)" />
+            <!-- 周围的保护圈，但留有空间 -->
+            <circle cx="200" cy="60" r="50" fill="none" stroke="#f5576c" stroke-width="1.5" stroke-dasharray="8,4" opacity="0.3" />
+            <!-- 向上的箭头，表示成长 -->
+            <path d="M 200 30 L 195 40 L 200 35 L 205 40 Z" fill="#f5576c" opacity="0.4" />
+          </svg>
         </div>
 
         <p>钱钟书在《写在人生边上》里说过：</p>
 
         <blockquote>
-
           <strong>"父母对子女的爱，若不懂得收敛，便容易变成无意的束缚。"</strong>
-
         </blockquote>
 
         <p>孩子长大了，他希望父母对他最好的爱是：<strong>信任他可以处理自己的生活。</strong></p>
@@ -421,17 +487,34 @@
         <hr />
 
         <div class="section-title">
-
           <span>三、</span>龙应台说："孩子最终要成为他自己，而不是父母的延伸。"
+        </div>
 
+        <div class="section-illustration">
+          <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.2" />
+                <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.15" />
+              </linearGradient>
+            </defs>
+            <!-- 两条独立的路径 -->
+            <path d="M 50 80 Q 100 40 150 80" stroke="#4facfe" stroke-width="2" fill="none" opacity="0.4" />
+            <path d="M 250 80 Q 300 40 350 80" stroke="#00f2fe" stroke-width="2" fill="none" opacity="0.4" />
+            <!-- 起点和终点 -->
+            <circle cx="50" cy="80" r="6" fill="#4facfe" opacity="0.5" />
+            <circle cx="150" cy="80" r="6" fill="#4facfe" opacity="0.5" />
+            <circle cx="250" cy="80" r="6" fill="#00f2fe" opacity="0.5" />
+            <circle cx="350" cy="80" r="6" fill="#00f2fe" opacity="0.5" />
+            <!-- 中间的分离 -->
+            <line x1="200" y1="30" x2="200" y2="110" stroke="#e4e4ea" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6" />
+          </svg>
         </div>
 
         <p>龙应台在《亲爱的安德烈》中写得很清楚：</p>
 
         <blockquote>
-
           <strong>"孩子不是父母生命的续集，孩子有他自己的人生。"</strong>
-
         </blockquote>
 
         <p>父母做好自己的人生，孩子做好自己的人生，这就是最和谐的状态。</p>
@@ -443,9 +526,28 @@
         <hr />
 
         <div class="section-title">
-
           <span>四、</span>父母真正的爱，是允许孩子独立，而不是继续替他生活
+        </div>
 
+        <div class="section-illustration">
+          <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.2" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.15" />
+              </linearGradient>
+            </defs>
+            <!-- 两个独立的圆 -->
+            <circle cx="150" cy="60" r="30" fill="url(#grad5)" />
+            <circle cx="250" cy="60" r="30" fill="url(#grad5)" />
+            <!-- 连接但保持距离 -->
+            <line x1="180" y1="60" x2="220" y2="60" stroke="#667eea" stroke-width="2" opacity="0.3" />
+            <!-- 周围的装饰 -->
+            <circle cx="100" cy="40" r="4" fill="#667eea" opacity="0.3" />
+            <circle cx="300" cy="40" r="4" fill="#764ba2" opacity="0.3" />
+            <circle cx="100" cy="80" r="4" fill="#667eea" opacity="0.3" />
+            <circle cx="300" cy="80" r="4" fill="#764ba2" opacity="0.3" />
+          </svg>
         </div>
 
         <p>心理学上有个概念叫"分化"，意思是不靠冲突、不靠疏远，而是各自成为成熟的独立个体。</p>
@@ -455,9 +557,7 @@
         <p>真正稳重的父母，会这样说：</p>
 
         <blockquote>
-
           <strong>"这些我想帮你做的事情，你自己也能做得很好。现在我关心你的方式，是尊重你的选择。"</strong>
-
         </blockquote>
 
         <p>这句话，比替他做一百次早餐都更温暖。</p>
@@ -465,9 +565,25 @@
         <hr />
 
         <div class="section-title">
-
           <span>五、</span>爱不是控制，而是看见对方已经长大
+        </div>
 
+        <div class="section-illustration">
+          <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.2" />
+                <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.15" />
+              </linearGradient>
+            </defs>
+            <!-- 眼睛图标，表示看见 -->
+            <ellipse cx="200" cy="60" rx="50" ry="30" fill="url(#grad6)" />
+            <ellipse cx="200" cy="60" rx="25" ry="15" fill="#f5576c" opacity="0.3" />
+            <circle cx="200" cy="60" r="8" fill="#f5576c" opacity="0.5" />
+            <!-- 周围的认可标记 -->
+            <path d="M 120 40 L 130 50 L 150 30" stroke="#f093fb" stroke-width="2" fill="none" opacity="0.4" />
+            <path d="M 280 40 L 290 50 L 310 30" stroke="#f5576c" stroke-width="2" fill="none" opacity="0.4" />
+          </svg>
         </div>
 
         <p>父母一直爱着孩子，这是不用怀疑的。</p>
@@ -485,9 +601,22 @@
         <hr />
 
         <div class="section-title">
-
           <span>六、</span>结语：真正的关心，是不过界；真正的尊重，是让对方做自己。
+        </div>
 
+        <div class="section-illustration">
+          <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="grad7" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.25" />
+                <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.2" />
+              </linearGradient>
+            </defs>
+            <!-- 和谐的心形 -->
+            <path d="M 200 80 C 200 60, 160 50, 160 70 C 160 50, 120 60, 120 80 C 120 100, 160 110, 200 120 C 240 110, 280 100, 280 80 C 280 60, 240 50, 240 70 C 240 50, 200 60, 200 80 Z" fill="url(#grad7)" />
+            <!-- 中间的平衡点 -->
+            <circle cx="200" cy="90" r="8" fill="#00f2fe" opacity="0.4" />
+          </svg>
         </div>
 
         <p>父母与孩子，不是谁对谁错，而是时代不同、方式不同。</p>
@@ -495,34 +624,21 @@
         <p>但有一点是相通的：</p>
 
         <p><strong>越成熟的爱，越懂得"克制"。<br/>
-
         越深的亲情，越懂得"放手"。</strong></p>
 
         <p>父母爱孩子一生，孩子感激父母一生。<br/>
-
         唯一需要调整的，只是爱的方式。</p>
 
         <div class="footer-note">
-
-          <span>© 林沂川 · 虚构人物，仅作示例使用。</span>
-
+          <span>© 林沂川</span>
           <span>本文可自由转发、分享，不作商业用途。</span>
-
         </div>
 
         <div class="author-bio">
-
-          作者简介：林沂川，虚构写作者形象，专注讨论亲子关系、边界感与成年人之间的体面相处方式。如有雷同，纯属巧合。
-
+          作者简介：林沂川，专注讨论亲子关系、边界感与成年人之间的体面相处方式。
         </div>
-
       </div>
-
     </article>
-
   </main>
-
 </body>
-
 </html>
-
